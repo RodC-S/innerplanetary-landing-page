@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600&family=Share&display=swap');
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+ }
+
+html, body, div, p {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* PROJECT VARIABLES */
+:root {
+    --yellow: rgb(253, 253, 150);
+    --red: rgb(255, 105, 97);
+    --blue: rgb(80, 134, 193);
+    --green: rgb(93, 196, 96);
+    --gray: #838383;
+    --rajdhani: 'Rajdhani', sans-serif;
+    --share: 'Share', sans-serif;
+}
+
+/* TYPOGRAPHY */
+h1, h2, h3, h4 {
+    font-family: var(--rajdhani);
+    font-weight: 400;
+    color: var(--white);
+    text-transform: uppercase;
+    margin: 0;
+}
+
+h1 {
+    font-size: 5rem;
+}
+
+h2 {
+    font-size: 3rem;
+}
+
+h3 {
+    font-size: 2.5rem;
+}
+
+h4 {
+    font-size: 1.6rem;
+}
+
+/* -----BACKGROUND ----- */
+body {
+    background-image: linear-gradient(to right, rgba(11, 13, 23, .8) 0 100%), url(css/background-mobile.png);
+    background-repeat: repeat, no-repeat;
+    background-size: cover;
+}
+
+/* -----END OF BACKGROUND----- */
+
+/* ----- HEADER ----- */
+header .top-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+header .top-header .logo {
+    width: 6rem;
+}
+
+header .top-header .logo img{
+    width: 100%;
+}
+
+header .top-header .btn-header button {
+    background: none;
+    border: none;
+}
+
+header .top-header .btn-header button i {
+    font-size: 3.5rem;
+    color: white;
+}
+
+header .top-header .btn-header .nav-bar {
+    display: none;
+}
