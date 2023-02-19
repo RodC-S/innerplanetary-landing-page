@@ -77,14 +77,34 @@ body {
 header .top-header {
     display: flex;
     justify-content: space-between;
+    padding: 0 1rem;
+    border-bottom: hsla(0, 0%, 100%, 1) solid 1px;
+}
+
+header .top-header.menu-active::after {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 1;
 }
 
 header .top-header .logo {
     width: 6rem;
+    opacity: .4;
 }
 
 header .top-header .logo img{
     width: 100%;
+}
+
+header .top-header .btn-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 header .top-header .btn-header button {
@@ -92,11 +112,52 @@ header .top-header .btn-header button {
     border: none;
 }
 
-header .top-header .btn-header button i {
-    font-size: 3.5rem;
-    color: white;
+header .top-header .btn-header button[class$="mode"] {
+    display: none;
+}
+
+header .top-header .btn-header button.light-mode img {
+    width: 4rem;
+    filter: invert(100%) sepia(12%) saturate(7500%) hue-rotate(193deg) brightness(113%) contrast(113%);
+}
+
+header .top-header .btn-header button.dark-mode img {
+    width: 4rem;
 }
 
 header .top-header .btn-header .nav-bar {
     display: none;
+}
+/* -----END OF HEADER ----- */
+
+/* ----- MENU ----- */
+header .top-header .btn-header .nav-bar.active {
+    display: block;
+    position: absolute;
+    right: 0;
+    left: 50%;
+    bottom: 0;
+    top: 0;
+    background-image: url(css/menu-galaxy.png), url(css/menu-galaxy.png);
+    background-repeat: no-repeat;
+    background-size: 40rem, 40rem;
+    background-position-y: 8rem, 38rem;
+    background-position-x: 8rem, -5rem;
+    background-color: rgb(11, 16, 35);
+    border: rgb(148, 148, 148) 1px solid;
+    border-radius: 2rem;
+    border-right:none;
+    border-bottom-right-radius: 0;
+    z-index: 100;
+}
+
+header .top-header .btn-header .nav-bar ul li {
+    padding: 1rem;
+}
+
+header .top-header .btn-header .nav-bar ul li a{
+    text-decoration: none;
+    font-family: var(--share);
+    color: rgb(184, 184, 184);
+    font-size: 1.8rem;
 }
