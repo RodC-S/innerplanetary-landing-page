@@ -8,19 +8,21 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/all.min.css">
 </head>
-<body>
+<body class="homepage">
     <header>
-        <div class="top-header menu-off">
+        <div class="top-header">
             <a href="#home" class="logo"><img src="style/logo.png" alt="Logo Innerplanetary"></a>
             <div class="btn-header">
                 <button class="light-mode active"><img src="style/icon-sun.svg" alt="light mode"></button>
                 <button class="dark-mode"><img src="style/icon-moon.svg" alt="dark mode"></button>
                 <button class="menu-btn"><img src="style/icon-hamburger.svg" alt="menu button"></button>
-                <nav class="nav-bar off">
+                <nav class="nav-bar" tabindex="0">
                     <button class="close-btn"><img src="style/icon-close.svg" alt="close menu button"></button>
-                    <ul>
-                        <li class="active"><a href="#home">Home</a></li>
-                        <li><a href="#history">History</a></li>
+                    <ul class="lside-nav" tabindex="-1">
+                        <li class="active" tabindex="-1"><a href="#home" tabindex="-1">Home</a></li>
+                        <li tabindex="0"><a href="google.com" tabindex="0">History</a></li>
+                    </ul>
+                    <ul class="rside-nav">
                         <li><a href="#technology">Technology</a></li>
                         <li><a href="#planets">Planets</a></li>
                     </ul>
@@ -29,7 +31,7 @@
         </div>
     </header>
 
-    <main class="homepage">
+    <main class="content">
         <div class="img-container"><img src="css/telescope.png" alt="Telescope"></div>
         <div class="text-container">
             <h1>See beyond what's in front of you</h1>

@@ -28,6 +28,10 @@ body {
     margin-right: auto;
 }
 
+img {
+    width: 100%;
+}
+
 /* PROJECT VARIABLES */
 :root {
     --yellow: rgb(253, 253, 150);
@@ -95,8 +99,19 @@ header .top-header {
 
     @media screen and (min-width: 768px) {
         header .top-header {
-            display: flex;
             justify-content: center;
+            border: none;
+        }
+
+        
+        header .top-header::after {
+            content: '';
+            position: absolute;
+            top: 4rem;
+            left: 0;
+            right: 0;
+            border-bottom: var(--gray) 1px dashed;
+            z-index: -10;
         }
     }
 
@@ -113,16 +128,39 @@ header .top-header.menu-active::after {
 
 header .top-header .logo {
     width: 6rem;
-    opacity: .4;
 }
 
     @media screen  and (min-width: 768px) {
         header .top-header .logo {
+            position: relative;
+            margin-top: .6rem;
+            z-index: 11;
+            background-color: rgb(11, 13, 23);
+            border: var(--gray) 1px dashed;
+            border-radius: 5rem;
+            padding: 1.5rem 1rem;
+            border-left: transparent;
         }
+
+        header .top-header .logo::before {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 1.5rem;
+            bottom: 1.9rem;
+            right: -1rem;
+            display: inline-block;
+
+            background-color: rgb(11, 13, 23);
+            z-index: -1;
+        }
+            
     }
 
 header .top-header .logo img{
     width: 100%;
+    opacity: .7;
 }
 
 header .top-header .btn-header {
@@ -133,7 +171,10 @@ header .top-header .btn-header {
 
     @media screen  and (min-width: 768px) {
         header .top-header .btn-header {
+            display: block;
             position: absolute;
+            right: 0;
+            left: 8rem;
         }
     }
 
@@ -146,18 +187,28 @@ header .top-header .btn-header button[class$="mode"] {
     display: none;
 }
 
-header .top-header .btn-header button.light-mode img {
+header .top-header .btn-header button.dark-mode,
+header .top-header .btn-header button.light-mode {
     width: 4rem;
+}
+
+header .top-header .btn-header button.light-mode img {
     filter: invert(100%) sepia(12%) saturate(7500%) hue-rotate(193deg) brightness(113%) contrast(113%);
 }
 
-header .top-header .btn-header button.dark-mode img {
-    width: 4rem;
-}
 
     @media screen and (min-width: 768px) {
         header .top-header .btn-header button.menu-btn {
             display: none;
+        }
+
+        header .top-header .btn-header button.active {
+            position: absolute;
+            width: 3.5rem;
+            right: 1rem;
+            z-index: 11;
+            top: 2.4rem;
+
         }
     }
 /* -----END OF HEADER ----- */
@@ -169,17 +220,9 @@ header .top-header .btn-header .nav-bar {
     position: absolute;
 }
 
-    @media screen and (min-width: 768px) {
-        header .top-header .btn-header .nav-bar {
-            transform: scale(1);
-            position: static;
-            left: 0;
-            top: 0;
-        }
-    }
-
 header .top-header .btn-header .nav-bar.active {
     transform: scale(1);
+    position: fixed;
     display: block;
     right: 0;
     left: 50%;
@@ -191,14 +234,36 @@ header .top-header .btn-header .nav-bar.active {
     background-position-y: center, 8rem, 38rem;
     background-position-x: center, 8rem, -5rem;
     background-color: rgb(11, 16, 35);
-    border: rgb(148, 148, 148) 1px dashed;
+    border: var(--gray) 1px dashed;
     border-radius: 2rem;
     border-right:none;
     border-bottom-right-radius: 0;
-    z-index: 100;
+    z-index: 10;
     transition: transform .2s ease-in-out;
     transform-origin: top right;
 }
+
+    @media screen and (min-width: 768px) {
+        header .top-header .btn-header .nav-bar {
+            transform: scale(1);
+            display: flex;
+            justify-content: space-around;
+            background-image: linear-gradient(to right, rgba(11, 13, 23, .85) 0 100%), url(css/menu-galaxy.png), url(css/menu-galaxy.png);
+            background-color: rgb(11, 13, 26);
+            background-repeat: repeat, no-repeat, no-repeat;
+            background-size: cover, 20rem, 20rem;
+            background-position-y: center, 0, -4rem;
+            background-position-x: center, 2rem, 40rem;
+            gap: 10rem;
+            margin-top: 2rem;
+            margin-left: 1.5rem;
+            border: rgb(148, 148, 148) 1px dashed;
+            border-radius: 1rem;
+            position: relative;
+            right: 0;
+        }
+
+    }
 
 header .top-header .btn-header .nav-bar button{
     margin: 1rem;
@@ -218,9 +283,19 @@ header .top-header .btn-header .nav-bar ul li {
     @media screen and (min-width: 768px) {
         header .top-header .btn-header .nav-bar ul {
             display: flex;
-            flex-direction: row;
-            justify-content: center;
+            gap: 1rem;
         }
+
+        header .top-header .btn-header .nav-bar ul.lside-nav {
+            margin-left: 4rem;
+
+        }
+
+        header .top-header .btn-header .nav-bar ul.rside-nav {
+            margin-right: 8rem;
+
+        }
+
     }
 
 header .top-header .btn-header .nav-bar ul li a{
@@ -239,25 +314,45 @@ header .top-header .btn-header .nav-bar ul li.active a {
 /* ----- END OF MENU ----- */
 
 /* ----- MAIN ----- */
-main.homepage {
+.homepage main.content {
     text-align: center;
 }
 
-main.homepage .img-container {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+.homepage main.content .img-container {
+    width: 25.6rem;
+    margin: 1rem auto;
 }
 
-main.homepage .text-container h1 {
+    @media screen and (min-width: 768px) {
+        .homepage main.content .img-container {
+            width: 40rem;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+    }
+
+.homepage main.content .text-container h1 {
     margin: 0 2rem;
 }
 
-main.homepage .text-container p {
+    @media screen and (min-width: 768px) {
+        .homepage main.content .text-container h1 {
+            margin: 0 20rem;
+        }
+    }
+
+.homepage main.content .text-container p {
     text-align: justify;
     margin: 3rem 3rem;
 }
 
-main.homepage .text-container button {
+    @media screen and (min-width: 768px) {
+        .homepage main.content .text-container p {
+            margin: 3rem 10rem;
+        }
+    }
+
+.homepage main.content .text-container button {
     margin-bottom: 4.5rem;
     padding: 2rem 4rem;
     background: linear-gradient(to right, rgba(11, 13, 23, .8) 0 100%), url(css/button-background.png);
@@ -270,3 +365,9 @@ main.homepage .text-container button {
     text-transform: uppercase;
     font-family: var(--share);
 }
+
+    @media screen and (min-width: 768px) {
+        .homepage main.content .text-container button {
+            margin: 2.5rem auto 6rem auto;
+        }
+    }
